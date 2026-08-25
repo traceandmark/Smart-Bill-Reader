@@ -31,7 +31,7 @@ Test the application using the sample bills included in the repository. Example 
 When finished, stop the application:
 docker compose down
 
-AI Service
+## AI Service
 
 The project uses Google Gemini as its AI service. I chose Gemini because, aside from ChatGPT, it is the AI service I am most familiar with. During development, I initially considered using ChatGPT, but I encountered limitations related to file/image processing and usage. Because the application is designed to process uploaded bills and invoices, I decided to switch to Gemini.
 

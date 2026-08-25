@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Bill Reader</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <h1>Smart Bill Reader</h1>
+
+        <p class="subtitle">
+            Upload a utility bill or invoice and let AI extract the important information.
+        </p>
+
+        <form id="uploadForm">
+
+            <div class="upload-box" id="uploadBox">
+
+                <p class="upload-icon">📄</p>
+
+                <h2>Upload your bill</h2>
+
+                <p>
+                    Drag and drop your file here
+                    <br>
+                    or
+                </p>
+
+                <label for="fileInput" class="browse-button">
+                    Browse Files
+                </label>
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    name="file"
+                    accept=".jpg,.jpeg,.png,.pdf"
+                    hidden
+                >
+
+                <p class="file-info">
+                    Accepted: JPG, JPEG, PNG, PDF
+                    <br>
+                    Maximum size: 10 MB
+                </p>
+
+                <p id="fileName"></p>
+
+            </div>
+
+            <button type="submit" id="processButton">
+                Process Document
+            </button>
+
+        </form>
+
+        <div id="loading" class="hidden">
+            <p>⏳ Analyzing your document...</p>
+            <p>Please wait.</p>
+        </div>
+
+        <div id="error" class="hidden"></div>
+
+        <section id="results" class="hidden">
+
+            <h2>Extracted Information</h2>
+
+            <div class="results-grid">
+
+                <div class="result-card">
+                    <span>Vendor</span>
+                    <strong id="vendorName">—</strong>
+                </div>
+
+                <div class="result-card">
+                    <span>Invoice Date</span>
+                    <strong id="invoiceDate">—</strong>
+                </div>
+
+                <div class="result-card">
+                    <span>Total Amount</span>
+                    <strong id="totalAmount">—</strong>
+                </div>
+
+                <div class="result-card">
+                    <span>Tax Amount</span>
+                    <strong id="taxAmount">—</strong>
+                </div>
+
+            </div>
+
+            <h3>Line Items</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+
+                <tbody id="lineItems">
+                </tbody>
+            </table>
+
+        </section>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
